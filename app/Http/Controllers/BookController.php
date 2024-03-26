@@ -13,6 +13,7 @@ class BookController extends Controller
     public function index()
     {
         $book = Book::orderBy('created_at', 'DESC')->get();
+
         return view('books.index', compact('book'));
     }
 
@@ -30,6 +31,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         Book::create($request->all());
+
         return redirect()->route('books')->with('success', 'Book added successfully');
     }
 
@@ -58,6 +60,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
         $book->update($request->all());
+
         return redirect()->route('books')->with('success', 'Book updated successfully');
     }
 
@@ -66,6 +69,9 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect()->route('books')->with('success', 'Book deleted successfully');
     }
 }

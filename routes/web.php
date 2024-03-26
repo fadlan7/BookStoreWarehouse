@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::controller(AuthController::class)->group(function(){
@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function(){
         Route::post('store', 'store')->name('books.store');
         Route::get('edit/{id}', 'edit')->name('books.edit');
         Route::put('edit/{id}', 'update')->name('books.update');
+        Route::delete('destroy/{id}', 'destroy')->name('books.destroy');
     });
 
 });

@@ -46,14 +46,18 @@
                             <td class="align-middle text-center">
                                 <div class="btn-group" role="group">
                                     <a href="{{route('books.edit', $b->id)}}" type="button" class="btn btn-secondary">Edit</a>
-                                    <button class="btn btn-danger">Delete</button>
+                                    <form action="{{route('books.destroy', $b->id)}}" method="POST" type="button" class="btn btn-danger p-0"  onsubmit="return confirm('Are you sure you want to delete?')">                                    
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger m-0">Delete</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
                     @endforeach
                 @else
                         <tr>
-                            <td class="text-center" colspan="8">Book not found</td>
+                            <td class="text-center" colspan="9">Book not found</td>
                         </tr>
                 @endif
               </tbody>
