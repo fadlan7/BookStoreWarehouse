@@ -45,7 +45,7 @@
                             <td class="align-middle text-center">{{$b->price}}</td>
                             <td class="align-middle text-center">
                                 <div class="btn-group" role="group">
-                                    <a href="" type="button" class="btn btn-secondary">Edit</a>
+                                    <a href="{{route('books.edit', $b->id)}}" type="button" class="btn btn-secondary">Edit</a>
                                     <button class="btn btn-danger">Delete</button>
                                 </div>
                             </td>

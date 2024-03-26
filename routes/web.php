@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function(){
         Route::get('', 'index')->name('books');
         Route::get('create', 'create')->name('books.create');
         Route::post('store', 'store')->name('books.store');
+        Route::get('edit/{id}', 'edit')->name('books.edit');
+        Route::put('edit/{id}', 'update')->name('books.update');
     });
 
 });
