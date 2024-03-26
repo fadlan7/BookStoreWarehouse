@@ -23,7 +23,7 @@
                     {{-- <small>{{ auth()->user()->level }}</small> --}}
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
                   </ul>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
