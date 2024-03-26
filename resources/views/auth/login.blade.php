@@ -18,10 +18,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin_assets/img/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{asset('admin_assets/img/favicon.png')}}">
   <title>
-    Soft UI Dashboard by Creative Tim
+    Login Page
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -93,7 +91,7 @@
                     @csrf
                     
                     @if ($errors->any())
-                        <div class="alert alert-warning">
+                        <div class="alert alert-warning auto-close">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -157,6 +155,46 @@
   <script src="{{asset('admin_assets/js/core/bootstrap.min.js')}}"></script>
   <script src="{{asset('admin_assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('admin_assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
+  <script>
+    const autoCloseElements = document.querySelectorAll(".auto-close");
+
+    // Define a function to handle the fading and sliding animation
+    function fadeAndSlide(element) {
+    const fadeDuration = 500;
+    const slideDuration = 500;
+    
+    // Step 1: Fade out the element
+    let opacity = 1;
+    const fadeInterval = setInterval(function () {
+        if (opacity > 0) {
+        opacity -= 0.1;
+        element.style.opacity = opacity;
+        } else {
+        clearInterval(fadeInterval);
+        // Step 2: Slide up the element
+        let height = element.offsetHeight;
+        const slideInterval = setInterval(function () {
+            if (height > 0) {
+            height -= 10;
+            element.style.height = height + "px";
+            } else {
+            clearInterval(slideInterval);
+            // Step 3: Remove the element from the DOM
+            element.parentNode.removeChild(element);
+            }
+        }, slideDuration / 10);
+        }
+    }, fadeDuration / 10);
+    }
+
+    // Set a timeout to execute the animation after 5000 milliseconds (5 seconds)
+    setTimeout(function () {
+    autoCloseElements.forEach(function (element) {
+        fadeAndSlide(element);
+    });
+    }, 3000);
+
+  </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

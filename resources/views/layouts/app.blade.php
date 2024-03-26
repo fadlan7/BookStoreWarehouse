@@ -151,7 +151,7 @@
     autoCloseElements.forEach(function (element) {
         fadeAndSlide(element);
     });
-    }, 5000);
+    }, 3000);
 
   </script>
   <script>
