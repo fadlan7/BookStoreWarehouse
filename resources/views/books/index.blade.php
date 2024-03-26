@@ -28,11 +28,34 @@
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Year</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
-                  <th class="text-secondary opacity-7"></th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                 </tr>
               </thead>
               <tbody>
-
+                @if($book->count() > 0)
+                    @foreach($book as $b)
+                        <tr>
+                            <td class="align-middle text-center">{{$loop->iteration}}</td>
+                            <td class="align-middle text-center">{{$b->title}}</td>
+                            <td class="align-middle text-center">{{$b->author}}</td>
+                            <td class="align-middle text-center">{{$b->publisher}}</td>
+                            <td class="align-middle text-center">{{$b->genre}}</td>
+                            <td class="align-middle text-center">{{$b->year}}</td>
+                            <td class="align-middle text-center">{{$b->stock}}</td>
+                            <td class="align-middle text-center">{{$b->price}}</td>
+                            <td class="align-middle text-center">
+                                <div class="btn-group" role="group">
+                                    <a href="" type="button" class="btn btn-secondary">Edit</a>
+                                    <button class="btn btn-danger">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                        <tr>
+                            <td class="text-center" colspan="8">Book not found</td>
+                        </tr>
+                @endif
               </tbody>
             </table>
           </div>
